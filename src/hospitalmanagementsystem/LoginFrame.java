@@ -17,6 +17,11 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+// Add these import statements near the top of LoginFrame.java
+import hospitalmanagementsystem.DoctorDashboard;
+import hospitalmanagementsystem.AdminDashboard; // Add when ready
+import hospitalmanagementsystem.PatientDashboard; // Add when ready
+import hospitalmanagementsystem.GuestDashboard; // Add when ready
 
 // Rest of your code...
 

@@ -2,20 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package hospitalmanagementsystem;
-import hospitalmanagementsystem.LoginFrame;
+
+// Import statements needed for the functionality
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.util.List; // Import List
 import hospitalmanagementsystem.Main; // Explicitly import Main
 import hospitalmanagementsystem.Patient; // Explicitly import Patient
-import javax.swing.*;
-import java.util.logging.Logger;
 
-    private void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 /**
  *
@@ -200,7 +197,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnconfirmappointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconfirmappointmentsActionPerformed
         JOptionPane.showMessageDialog(this, "Doctor: View Patient Records");
     }//GEN-LAST:event_btnconfirmappointmentsActionPerformed
@@ -211,7 +208,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     if (patient == null || patient.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No patient records found.", "Patient Records", JOptionPane.INFORMATION_MESSAGE);
         return;
-    }
+}
 
     // Build a string representation of all patients
     StringBuilder records = new StringBuilder("Patient Records:\n-------------------\n");
@@ -232,7 +229,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     JScrollPane scrollPane = new JScrollPane(textArea);
     // Show the dialog
     JOptionPane.showMessageDialog(this, scrollPane, "Patient Records", JOptionPane.INFORMATION_MESSAGE);
-}
+
     }//GEN-LAST:event_btnpatientrecordsActionPerformed
 
     private void btnprescribemedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprescribemedicationActionPerformed
