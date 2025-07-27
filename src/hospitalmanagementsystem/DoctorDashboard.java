@@ -3,6 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hospitalmanagementsystem;
+import hospitalmanagementsystem.LoginFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.util.List; // Import List
+import hospitalmanagementsystem.Main; // Explicitly import Main
+import hospitalmanagementsystem.Patient; // Explicitly import Patient
+import javax.swing.*;
+import java.util.logging.Logger;
+
+    private void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 /**
  *
@@ -32,11 +45,11 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnpatientrecords = new javax.swing.JButton();
+        btnprescribemedication = new javax.swing.JButton();
+        btnmedicalreport = new javax.swing.JButton();
+        btnlogout = new javax.swing.JButton();
+        btnconfirmappointments = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,59 +61,96 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Welcome Doctor!");
 
-        jButton1.setText("jButton1");
+        btnpatientrecords.setBackground(new java.awt.Color(0, 51, 204));
+        btnpatientrecords.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnpatientrecords.setForeground(new java.awt.Color(0, 0, 0));
+        btnpatientrecords.setText("View patient records");
+        btnpatientrecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpatientrecordsActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        btnprescribemedication.setBackground(new java.awt.Color(0, 51, 204));
+        btnprescribemedication.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnprescribemedication.setForeground(new java.awt.Color(0, 0, 0));
+        btnprescribemedication.setText("Prescribe medication");
+        btnprescribemedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprescribemedicationActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        btnmedicalreport.setBackground(new java.awt.Color(0, 51, 204));
+        btnmedicalreport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnmedicalreport.setForeground(new java.awt.Color(0, 0, 0));
+        btnmedicalreport.setText("Generate medical reports");
+        btnmedicalreport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmedicalreportActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton4");
+        btnlogout.setBackground(new java.awt.Color(0, 51, 204));
+        btnlogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnlogout.setForeground(new java.awt.Color(0, 0, 0));
+        btnlogout.setText("Log out");
+        btnlogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlogoutActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("jButton5");
+        btnconfirmappointments.setBackground(new java.awt.Color(0, 51, 204));
+        btnconfirmappointments.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnconfirmappointments.setForeground(new java.awt.Color(0, 0, 0));
+        btnconfirmappointments.setText("Confirm appointments");
+        btnconfirmappointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnconfirmappointmentsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(218, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(199, 199, 199))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1)
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton2)
-                        .addGap(194, 194, 194)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jButton4)
-                        .addGap(143, 143, 143)
-                        .addComponent(jButton5)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                        .addComponent(btnpatientrecords)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnconfirmappointments)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnprescribemedication))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(btnmedicalreport))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(btnlogout)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton3)))
-                .addGap(61, 61, 61)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(295, Short.MAX_VALUE))
+                    .addComponent(btnpatientrecords)
+                    .addComponent(btnconfirmappointments)
+                    .addComponent(btnprescribemedication))
+                .addGap(50, 50, 50)
+                .addComponent(btnmedicalreport)
+                .addGap(72, 72, 72)
+                .addComponent(btnlogout)
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -108,16 +158,16 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addGap(79, 79, 79))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(53, 53, 53)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -151,6 +201,58 @@ public class DoctorDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnconfirmappointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconfirmappointmentsActionPerformed
+        JOptionPane.showMessageDialog(this, "Doctor: View Patient Records");
+    }//GEN-LAST:event_btnconfirmappointmentsActionPerformed
+
+    private void btnpatientrecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpatientrecordsActionPerformed
+        List<Patient> patient = Main.patientList;
+
+    if (patient == null || patient.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No patient records found.", "Patient Records", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+
+    // Build a string representation of all patients
+    StringBuilder records = new StringBuilder("Patient Records:\n-------------------\n");
+    for (Patient p : patient) {
+        records.append("ID: ").append(p.getId()).append("\n");
+        records.append("Name: ").append(p.getName()).append("\n");
+        records.append("Age: ").append(p.getAge()).append("\n");
+        records.append("Gender: ").append(p.getGender()).append("\n");
+        records.append("Medical History: ").append(p.getMedicalHistory()).append("\n");
+        records.append("-------------------\n");
+    }
+
+    // Display in a scrollable text area
+    JTextArea textArea = new JTextArea(records.toString());
+    textArea.setEditable(false); // Make it read-only
+    textArea.setColumns(40); // Set approximate width
+    textArea.setRows(20);    // Set approximate height
+    JScrollPane scrollPane = new JScrollPane(textArea);
+    // Show the dialog
+    JOptionPane.showMessageDialog(this, scrollPane, "Patient Records", JOptionPane.INFORMATION_MESSAGE);
+}
+    }//GEN-LAST:event_btnpatientrecordsActionPerformed
+
+    private void btnprescribemedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprescribemedicationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnprescribemedicationActionPerformed
+
+    private void btnmedicalreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmedicalreportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmedicalreportActionPerformed
+
+    private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
+        JOptionPane.showMessageDialog(this, "Logged out successfully!");
+
+    // Create and display the LoginFrame
+        new LoginFrame().setVisible(true);
+
+    // Close the current DoctorDashboard window
+        this.dispose();
+    }//GEN-LAST:event_btnlogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,11 +279,11 @@ public class DoctorDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnconfirmappointments;
+    private javax.swing.JButton btnlogout;
+    private javax.swing.JButton btnmedicalreport;
+    private javax.swing.JButton btnpatientrecords;
+    private javax.swing.JButton btnprescribemedication;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

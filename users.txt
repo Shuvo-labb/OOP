@@ -1,0 +1,4 @@
+doctor1,docpass1,Doctor
+admin1,adminpass1,Admin
+patient1,patpass1,Patient
+guest1,guestpass1,Guest

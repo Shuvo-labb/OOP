@@ -1,0 +1,2 @@
+HCP001,Diabetes Management Workshop,Educational session on managing diabetes.,Every 1st Saturday, 2pm
+HCP002,Heart Health Checkup Camp,Free basic heart checkups for seniors.,Monthly, Contact Admin

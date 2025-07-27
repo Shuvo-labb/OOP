@@ -1,0 +1,2 @@
+POL001,Visiting Hours,Visitors are allowed between 10am and 8pm.
+POL002,No Smoking,Smoking is strictly prohibited within hospital premises.

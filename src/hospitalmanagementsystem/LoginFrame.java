@@ -4,6 +4,22 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane; // Add this line
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+// Rest of your code...
+
 /**
  *
  * @author shaik
@@ -14,7 +30,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private User[] users = new User[100];  // Max 100 users
     private int userCount = 0;
     private void loadUsers() {
-    try (java.util.Scanner scanner = new java.util.Scanner(new java.io.File("users.txt"))) {
+    try (Scanner scanner = new Scanner(new File("users.txt"))) {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] parts = line.split(",");
@@ -22,7 +38,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 users[userCount++] = new User(parts[0], parts[1], parts[2]);
             }
         }
-    } catch (java.io.FileNotFoundException e) {
+    } catch (FileNotFoundException e) {
         System.out.println("users.txt not found. Starting with empty user list.");
     }
 }
@@ -33,6 +49,7 @@ public class LoginFrame extends javax.swing.JFrame {
         initComponents();
         loadUsers();
     }
+    
 
 
     /**
@@ -95,6 +112,12 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Role");
@@ -115,9 +138,9 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(162, 162, 162))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -244,6 +267,10 @@ public class LoginFrame extends javax.swing.JFrame {
         }
       
     }//GEN-LAST:event_btnloginActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments

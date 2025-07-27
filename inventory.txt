@@ -1,0 +1,2 @@
+I001,Paracetamol,100,MediSupply Co.
+I002,Bandages,50,First Aid Ltd.

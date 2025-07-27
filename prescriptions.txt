@@ -1,0 +1,2 @@
+PR001,P001,D001,Paracetamol,500mg,20
+PR002,P002,D002,Amoxicillin,250mg,15
