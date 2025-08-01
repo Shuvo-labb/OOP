@@ -47,37 +47,35 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         btnviewpres.setBackground(new java.awt.Color(255, 255, 51));
         btnviewpres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnviewpres.setForeground(new java.awt.Color(0, 0, 0));
         btnviewpres.setText("View prescription");
+        btnviewpres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewpresActionPerformed(evt);
+            }
+        });
 
         btngenstockrep.setBackground(new java.awt.Color(255, 255, 51));
         btngenstockrep.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btngenstockrep.setForeground(new java.awt.Color(0, 0, 0));
         btngenstockrep.setText("Generate stock reports");
 
         btnmanageinv.setBackground(new java.awt.Color(255, 255, 51));
         btnmanageinv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnmanageinv.setForeground(new java.awt.Color(0, 0, 0));
         btnmanageinv.setText("Manage inventory");
 
         btnreg.setBackground(new java.awt.Color(255, 255, 51));
         btnreg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnreg.setForeground(new java.awt.Color(0, 0, 0));
         btnreg.setText("Register staff/patient");
 
         btnahp.setBackground(new java.awt.Color(255, 255, 51));
         btnahp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnahp.setForeground(new java.awt.Color(0, 0, 0));
         btnahp.setText("Amend hospital policies");
 
         btnreghp.setBackground(new java.awt.Color(255, 255, 51));
         btnreghp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnreghp.setForeground(new java.awt.Color(0, 0, 0));
         btnreghp.setText("Register healthcare programs");
 
         btnlogout.setBackground(new java.awt.Color(255, 255, 51));
         btnlogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnlogout.setForeground(new java.awt.Color(0, 0, 0));
         btnlogout.setText("logout");
         btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +85,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         btndispencemed.setBackground(new java.awt.Color(255, 255, 51));
         btndispencemed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btndispencemed.setForeground(new java.awt.Color(0, 0, 0));
         btndispencemed.setText("Dispence medicine");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -96,29 +93,29 @@ public class AdminDashboard extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
+                .addComponent(btnviewpres)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btndispencemed)
+                .addGap(69, 69, 69))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(btnmanageinv))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnreg)))
+                .addGap(35, 35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnreghp)
-                                .addGap(132, 132, 132)
-                                .addComponent(btnlogout)
-                                .addGap(0, 82, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnviewpres)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btndispencemed)))
-                        .addGap(69, 69, 69))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnmanageinv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btngenstockrep)
-                        .addGap(41, 41, 41))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnreg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnahp)
-                        .addGap(34, 34, 34))))
+                    .addComponent(btnahp)
+                    .addComponent(btngenstockrep))
+                .addGap(41, 41, 41))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(btnreghp)
+                .addGap(66, 66, 66)
+                .addComponent(btnlogout)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,36 +124,42 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnviewpres)
                     .addComponent(btndispencemed))
-                .addGap(55, 55, 55)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btngenstockrep)
-                    .addComponent(btnmanageinv))
-                .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnreg)
-                    .addComponent(btnahp))
-                .addGap(88, 88, 88)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnreghp)
-                    .addComponent(btnlogout))
-                .addContainerGap(611, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(btngenstockrep))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(btnmanageinv)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(btnahp)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnlogout))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnreg)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnreghp)))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +168,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addGap(0, 46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,6 +184,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         new LoginFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnlogoutActionPerformed
+
+    private void btnviewpresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnviewpresActionPerformed
 
     /**
      * @param args the command line arguments
