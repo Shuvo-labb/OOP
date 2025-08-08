@@ -55,12 +55,10 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Welcome Doctor!");
 
         btnpatientrecords.setBackground(new java.awt.Color(0, 51, 204));
         btnpatientrecords.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnpatientrecords.setForeground(new java.awt.Color(0, 0, 0));
         btnpatientrecords.setText("View patient records");
         btnpatientrecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +68,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         btnprescribemedication.setBackground(new java.awt.Color(0, 51, 204));
         btnprescribemedication.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnprescribemedication.setForeground(new java.awt.Color(0, 0, 0));
         btnprescribemedication.setText("Prescribe medication");
         btnprescribemedication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +77,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         btnmedicalreport.setBackground(new java.awt.Color(0, 51, 204));
         btnmedicalreport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnmedicalreport.setForeground(new java.awt.Color(0, 0, 0));
         btnmedicalreport.setText("Generate medical reports");
         btnmedicalreport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +86,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         btnlogout.setBackground(new java.awt.Color(0, 51, 204));
         btnlogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnlogout.setForeground(new java.awt.Color(0, 0, 0));
         btnlogout.setText("Log out");
         btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +95,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         btnconfirmappointments.setBackground(new java.awt.Color(0, 51, 204));
         btnconfirmappointments.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnconfirmappointments.setForeground(new java.awt.Color(0, 0, 0));
         btnconfirmappointments.setText("Confirm appointments");
         btnconfirmappointments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

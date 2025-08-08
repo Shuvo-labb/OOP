@@ -173,6 +173,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate stock reports"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btngenstockrepActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnmanageinv">
               <Properties>
@@ -184,6 +187,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manage inventory"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmanageinvActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnreg">
               <Properties>
@@ -195,6 +201,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Register staff/patient"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnahp">
               <Properties>
@@ -206,6 +215,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Amend hospital policies"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnahpActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnreghp">
               <Properties>
@@ -217,6 +229,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Register healthcare programs"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnreghpActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnlogout">
               <Properties>
@@ -242,6 +257,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dispence medicine"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndispencemedActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -1,0 +1,7 @@
+Prescription ID: RH123
+Patient: John
+Doctor: Dr.Kang
+Medicine: Paracetamol 500mg
+Dosage: 1 tablet, 3 times a day after meals
+Duration: 5 days
+----------------------------------

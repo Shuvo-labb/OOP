@@ -57,22 +57,47 @@ public class AdminDashboard extends javax.swing.JFrame {
         btngenstockrep.setBackground(new java.awt.Color(255, 255, 51));
         btngenstockrep.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btngenstockrep.setText("Generate stock reports");
+        btngenstockrep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngenstockrepActionPerformed(evt);
+            }
+        });
 
         btnmanageinv.setBackground(new java.awt.Color(255, 255, 51));
         btnmanageinv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnmanageinv.setText("Manage inventory");
+        btnmanageinv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmanageinvActionPerformed(evt);
+            }
+        });
 
         btnreg.setBackground(new java.awt.Color(255, 255, 51));
         btnreg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnreg.setText("Register staff/patient");
+        btnreg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregActionPerformed(evt);
+            }
+        });
 
         btnahp.setBackground(new java.awt.Color(255, 255, 51));
         btnahp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnahp.setText("Amend hospital policies");
+        btnahp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnahpActionPerformed(evt);
+            }
+        });
 
         btnreghp.setBackground(new java.awt.Color(255, 255, 51));
         btnreghp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnreghp.setText("Register healthcare programs");
+        btnreghp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreghpActionPerformed(evt);
+            }
+        });
 
         btnlogout.setBackground(new java.awt.Color(255, 255, 51));
         btnlogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -86,6 +111,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         btndispencemed.setBackground(new java.awt.Color(255, 255, 51));
         btndispencemed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btndispencemed.setText("Dispence medicine");
+        btndispencemed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndispencemedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -186,8 +216,46 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnlogoutActionPerformed
 
     private void btnviewpresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpresActionPerformed
-        // TODO add your handling code here:
+    Viewprescription view = new Viewprescription();  // Create the new frame
+    view.setVisible(true);                           // Show the new frame
+    this.dispose();                                  // Close the current frame (optional)
     }//GEN-LAST:event_btnviewpresActionPerformed
+
+    private void btndispencemedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndispencemedActionPerformed
+    DisperseMedicine disperse = new DisperseMedicine();  // Create the new frame
+    disperse.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btndispencemedActionPerformed
+
+    private void btnmanageinvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageinvActionPerformed
+    InventoryManagement inventory = new InventoryManagement();  // Create the new frame
+    inventory.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnmanageinvActionPerformed
+
+    private void btnahpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnahpActionPerformed
+    Amendhospitalpolicies amend = new Amendhospitalpolicies ();  // Create the new frame
+    amend.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnahpActionPerformed
+
+    private void btnregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregActionPerformed
+    Registerstaffandpatients reg = new Registerstaffandpatients();  // Create the new frame
+    reg.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnregActionPerformed
+
+    private void btnreghpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreghpActionPerformed
+    Registerhealthcareprograms reg = new Registerhealthcareprograms ();  // Create the new frame
+    reg.setVisible(true);                           // Show the new frame
+    this.dispose();  
+    }//GEN-LAST:event_btnreghpActionPerformed
+
+    private void btngenstockrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenstockrepActionPerformed
+    GenerateStockReports generate = new GenerateStockReports();  // Create the new frame
+    generate.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btngenstockrepActionPerformed
 
     /**
      * @param args the command line arguments
