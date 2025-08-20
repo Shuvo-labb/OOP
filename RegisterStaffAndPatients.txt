@@ -1,7 +1,72 @@
-Item 1,Dr.Kang
-Item 1,Doctor, Dr.Kang
-Dr.Jane
-DrKang
-jTextField1
-Dr .Kang
-Dr.One
+Patient ID   : 101
+Doctor Record: Dr.Kang
+Nurse Record : Mr.Selvi
+Patient Record: Dr.K
+Record (txtitems): Dr.Kang - Mr.Selvi - Dr.K
+Record (txtnewitem): Patient: Dr.K (ID: 101), Doctor: Dr.Kang, Nurse: Mr.Selvi
+--------------------------------
+UPDATED RECORD
+UPDATED RECORD
+UPDATED RECORD
+Patient ID   : 101
+Doctor Record: Dr.Kang
+Nurse Record : Mr.Selvi
+Patient Record: Dr.K
+Record (txtitems): Dr.Kang - Mr.Selvi - Dr.K
+Record (txtnewitem): Patient: Dr.K (ID: 101), Doctor: Dr.Kang, Nurse: Mr.Selvi
+--------------------------------
+UPDATED RECORD
+UPDATED RECORD
+UPDATED RECORD
+Patient ID   : 101
+Doctor Record: Dr.Kang
+Nurse Record : Mr.Selvi
+Patient Record: Dr.K
+Record (txtitems): Dr.Kang - Mr.Selvi - Dr.K
+Record (txtnewitem): Patient: Dr.K (ID: 101), Doctor: Dr.Kang, Nurse: Mr.Selvi
+--------------------------------
+UPDATED RECORD
+UPDATED RECORD
+UPDATED RECORD
+Patient ID   : 101
+Doctor Record: Dr.Kang
+Nurse Record : Mr.Selvi
+Patient Record: Dr.K
+Record (txtitems): Dr.Kang - Mr.Selvi - Dr.K
+Record (txtnewitem): Patient: Dr.K (ID: 101), Doctor: Dr.Kang, Nurse: Mr.Selvi
+--------------------------------
+--------------------------------
+Patient ID   : 124
+Doctor Record: Dr. Kim
+Nurse Record : Mrs.Farah
+Patient Record: Mr.K
+Date         : 25/05/2002
+Record (txtitems): Mr.K - Mrs.Farah - Dr. Kim  (Date: 25/05/2002)
+txtNewItem   : Mr.K - Mrs.Farah - Dr. Kim  (Date: 25/05/2002)
+--------------------------------
+--------------------------------
+--------------------------------
+Doctor Record: Dr.K
+Nurse Record : Mrs.Sarah
+Patient Record: Mr.Selvi
+Patient Gender: Male
+Date         : 22/05/2002
+Record (txtitems): Dr.K - Mrs.Sarah - Mr.Selvi (Date: 22/05/2002)
+--------------------------------
+Patient ID   : 1025
+Doctor Record: Dr.K
+Nurse Record : Mrs.Farah
+Patient Record: Mr.Selvi
+Patient Gender: Male
+Date         : 25/02/2003
+Record (txtitems): Dr.K - Mrs.Farah - Mr.SelviMale (Date: 25/02/2003)
+--------------------------------
+Patient ID   : 1024
+Doctor Record: Dr.K
+Nurse Record : Mrs.Sarah
+Patient Record: Dr.Kang
+Patient Gender: Male
+Date         : 25/01/2001
+Record (txtitems): Dr.Kang Male - Mrs.Sarah - Dr.K  (Date: 25/01/2001)
+txtNewItem   : Dr.Kang Male - Mrs.Sarah - Dr.K  (Date: 25/01/2001)
+--------------------------------

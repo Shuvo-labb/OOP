@@ -4,12 +4,16 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,13 +49,23 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         txtProgram = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         Programsitem = new javax.swing.JComboBox<>();
+        RegisterHealthProgram = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtPatientName = new javax.swing.JTextField();
+        txtPatientID = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtorganiser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 51));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        btnReturn.setBackground(new java.awt.Color(51, 51, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +73,8 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(0, 51, 255));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +82,8 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(0, 0, 255));
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +91,8 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
             }
         });
 
+        btnAdd.setBackground(new java.awt.Color(51, 51, 255));
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +102,22 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
 
         jLabel1.setText("Programs: ");
 
-        Programsitem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        RegisterHealthProgram.setText("Register Health Program");
+        RegisterHealthProgram.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                RegisterHealthProgramAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabel2.setText("Patient Name:");
+
+        jLabel3.setText("Patient ID:");
+
+        jLabel4.setText("Organiser:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -92,11 +127,15 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAdd)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(btnAdd))
                                 .addGap(79, 79, 79)
                                 .addComponent(btnEdit)
                                 .addGap(101, 101, 101)
@@ -104,8 +143,14 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
                                 .addGap(75, 75, 75)
                                 .addComponent(btnReturn))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(Programsitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtPatientID)
+                                        .addComponent(txtPatientName)
+                                        .addComponent(Programsitem, 0, 257, Short.MAX_VALUE)
+                                        .addComponent(txtorganiser))
+                                    .addComponent(RegisterHealthProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(275, 275, 275)
                         .addComponent(txtProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -114,11 +159,25 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Programsitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(RegisterHealthProgram)
+                .addGap(82, 82, 82)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtorganiser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Programsitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(txtProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,14 +195,14 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,33 +224,62 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        Programsitem.addItem(txtProgram.getText());
-        String program = txtProgram.getText().trim();
+    String patientId = txtPatientID.getText().trim();
+    String patientName = txtPatientName.getText().trim();
+    String organiser = txtorganiser.getText().trim();
+    String program = txtProgram.getText().trim();
 
-    if (program.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please enter a program name.");
+    // Validation for empty fields
+    if (patientId.isEmpty() || patientName.isEmpty() || organiser.isEmpty() || program.isEmpty()) {
+        JLabel errorLabel = new JLabel("All fields are required!");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(this, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
+    // Add program to combo box (only if valid)
+    Programsitem.addItem(program);
+
+    // Save to file
     try (PrintWriter writer = new PrintWriter(new FileWriter("HealthCarePrograms.txt", true))) {
-        writer.println(program);
-        JOptionPane.showMessageDialog(this, "Program added successfully.");
+        writer.println("Patient ID: " + patientId);
+        writer.println("Patient Name: " + patientName);
+        writer.println("Organiser: " + organiser);
+        writer.println("Program: " + program);
+        writer.println("----------------------------------");
+
+        JOptionPane.showMessageDialog(this, 
+            "Record added successfully!\n\n" +
+            "Patient ID: " + patientId + "\n" +
+            "Patient Name: " + patientName + "\n" +
+            "Organiser: " + organiser + "\n" +
+            "Program: " + program
+        );
+
+        // Clear fields after adding
+        txtPatientID.setText("");
+        txtPatientName.setText("");
+        txtorganiser.setText("");
         txtProgram.setText("");
+        
+        System.out.println("Data Written Successfully");
+
     } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error adding program: " + e.getMessage());
-      }
+        JOptionPane.showMessageDialog(this, "Error adding record: " + e.getMessage());
+     }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        String oldProgram = txtProgram.getText().trim();
+        String searchID = txtPatientID.getText().trim();
 
-    if (oldProgram.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Enter the program you want to edit.");
+    if (searchID.isEmpty()) {
+        JLabel errorLabel = new JLabel("Please enter a Patient ID to edit.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(this, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
-
-    String newProgram = JOptionPane.showInputDialog(this, "Enter the new program name:", oldProgram);
-    if (newProgram == null || newProgram.trim().isEmpty()) return;
 
     try {
         File file = new File("HealthCarePrograms.txt");
@@ -201,8 +289,39 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         boolean found = false;
 
         while ((line = reader.readLine()) != null) {
-            if (line.trim().equals(oldProgram)) {
-                lines.add(newProgram);
+            if (line.startsWith("Patient ID: " + searchID)) {
+                // Read existing details
+                String oldPatientID = line.substring(12);
+                String oldPatientName = reader.readLine().substring(14); // "Patient Name: "
+                String oldOrganiser = reader.readLine().substring(11); // "Organiser: "
+                String oldProgram = reader.readLine().substring(9); // "Program: "
+                reader.readLine(); // skip separator line
+
+                // Ask for updated details
+                String newPatientName = JOptionPane.showInputDialog(this, "Enter new patient name:", oldPatientName);
+                if (newPatientName == null || newPatientName.trim().isEmpty()) newPatientName = oldPatientName;
+
+                String newOrganiser = JOptionPane.showInputDialog(this, "Enter new organiser:", oldOrganiser);
+                if (newOrganiser == null || newOrganiser.trim().isEmpty()) newOrganiser = oldOrganiser;
+
+                String newProgram = (String) JOptionPane.showInputDialog(
+                        this,
+                        "Select new program:",
+                        "Edit Program",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        getComboBoxItems(Programsitem),
+                        oldProgram
+                );
+                if (newProgram == null || newProgram.trim().isEmpty()) newProgram = oldProgram;
+
+                // Save updated record
+                lines.add("Patient ID: " + oldPatientID);
+                lines.add("Patient Name: " + newPatientName);
+                lines.add("Organiser: " + newOrganiser);
+                lines.add("Program: " + newProgram);
+                lines.add("---------------------------------");
+
                 found = true;
             } else {
                 lines.add(line);
@@ -211,29 +330,43 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         reader.close();
 
         if (!found) {
-            JOptionPane.showMessageDialog(this, "Program not found.");
+            JOptionPane.showMessageDialog(this, "Patient ID not found.");
             return;
         }
 
+        // Write back to file
         PrintWriter writer = new PrintWriter(new FileWriter(file));
         for (String updatedLine : lines) {
             writer.println(updatedLine);
         }
         writer.close();
 
-        JOptionPane.showMessageDialog(this, "Program updated successfully.");
-        txtProgram.setText("");
+        JOptionPane.showMessageDialog(this, "Record updated successfully.");
+        txtPatientID.setText("");
+        System.out.println("Edit Written Successfully");
 
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error editing program: " + e.getMessage());
      }
     }//GEN-LAST:event_btnEditActionPerformed
 
+    // Helper to get JComboBox items as array
+   private String[] getComboBoxItems(JComboBox<String> comboBox) {
+    String[] items = new String[comboBox.getItemCount()];
+    for (int i = 0; i < comboBox.getItemCount(); i++) {
+        items[i] = comboBox.getItemAt(i);
+    }
+    return items;
+    }
+   
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        String programToDelete = txtProgram.getText().trim();
+        String searchID = txtPatientID.getText().trim();
 
-    if (programToDelete.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Enter the program to delete.");
+    if (searchID.isEmpty()) {
+        JLabel errorLabel = new JLabel("Please enter a Patient ID to delete.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(this, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -243,32 +376,45 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         java.util.List<String> lines = new java.util.ArrayList<>();
         String line;
         boolean found = false;
+        String programToRemove = null;
 
         while ((line = reader.readLine()) != null) {
-            if (line.trim().equals(programToDelete)) {
+            if (line.startsWith("Patient ID: " + searchID)) {
+                // Skip this record
+                String patientName = reader.readLine(); // Patient Name
+                String organiser = reader.readLine();   // Organiser
+                programToRemove = reader.readLine();    // Program
+                reader.readLine(); // Separator
                 found = true;
-                continue; // Skip this line
+            } else {
+                lines.add(line);
             }
-            lines.add(line);
         }
         reader.close();
 
         if (!found) {
-            JOptionPane.showMessageDialog(this, "Program not found.");
+            JOptionPane.showMessageDialog(this, "Patient ID not found.");
             return;
         }
 
+        // Write updated file without deleted record
         PrintWriter writer = new PrintWriter(new FileWriter(file));
         for (String updatedLine : lines) {
             writer.println(updatedLine);
         }
         writer.close();
 
-        JOptionPane.showMessageDialog(this, "Program deleted successfully.");
-        txtProgram.setText("");
+        // Remove from JComboBox if program is in the list
+        if (programToRemove != null) {
+            Programsitem.removeItem(programToRemove);
+        }
+
+        JOptionPane.showMessageDialog(this, "Record deleted successfully.");
+        txtPatientID.setText("");
+        System.out.println("Delete Written Successfully");
 
     } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error deleting program: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Error deleting record: " + e.getMessage());
       }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -277,6 +423,11 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
         admin.setVisible(true);                      // Show it
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void RegisterHealthProgramAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_RegisterHealthProgramAncestorAdded
+        RegisterHealthProgram.setText("Register Health Program");
+        RegisterHealthProgram.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_RegisterHealthProgramAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -305,13 +456,20 @@ public class Registerhealthcareprograms extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Programsitem;
+    private javax.swing.JLabel RegisterHealthProgram;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtPatientID;
+    private javax.swing.JTextField txtPatientName;
     private javax.swing.JTextField txtProgram;
+    private javax.swing.JTextField txtorganiser;
     // End of variables declaration//GEN-END:variables
 }

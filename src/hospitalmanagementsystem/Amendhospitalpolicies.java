@@ -4,12 +4,15 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Amendhospitalpolicies extends javax.swing.JFrame {
@@ -44,13 +47,17 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         txtPolicyItem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Weeks = new javax.swing.JComboBox<>();
+        AmendHospitalPolicies = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        btnReturn.setBackground(new java.awt.Color(51, 51, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +65,8 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
             }
         });
 
+        btndelete.setBackground(new java.awt.Color(51, 51, 255));
+        btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +74,8 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(51, 51, 255));
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +83,8 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
             }
         });
 
+        btnAdd.setBackground(new java.awt.Color(51, 51, 255));
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,11 +94,18 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
 
         jLabel1.setText("Visiting Hours:");
 
-        VisitingHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setText("Weeks:");
 
-        Weeks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AmendHospitalPolicies.setText("Amend Hospital Policies");
+        AmendHospitalPolicies.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                AmendHospitalPoliciesAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,11 +128,17 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
                                         .addComponent(btnEdit)
                                         .addGap(57, 57, 57)
                                         .addComponent(btndelete))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Weeks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(VisitingHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Weeks, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(AmendHospitalPolicies)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(57, 57, 57)
+                                            .addComponent(VisitingHours, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(64, 64, 64)
                         .addComponent(btnReturn)))
                 .addContainerGap(81, Short.MAX_VALUE))
@@ -120,7 +146,9 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
+                .addGap(51, 51, 51)
+                .addComponent(AmendHospitalPolicies)
+                .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(VisitingHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -128,7 +156,7 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(Weeks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(txtPolicyItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,7 +172,7 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(232, 232, 232))
         );
@@ -169,6 +197,7 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         VisitingHours.addItem(txtPolicyItem.getText());
         Weeks.addItem(txtPolicyItem.getText());
@@ -176,6 +205,10 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
     String newPolicy = txtPolicyItem.getText().trim();
     if (newPolicy.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please enter a policy to add.");
+        JLabel errorLabel = new JLabel("Invalid Policy empty!!! Please add again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -197,6 +230,10 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
 
     if (oldPolicy.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please enter the policy you want to edit.");
+        JLabel errorLabel = new JLabel("Invalid Policy empty!!! Please edit again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -237,6 +274,7 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Policy updated successfully.");
         txtPolicyItem.setText("");
+        System.out.println("Edit Written Successfully");
 
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error editing policy: " + e.getMessage());
@@ -248,6 +286,10 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
 
     if (policyToDelete.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please enter the policy to delete.");
+        JLabel errorLabel = new JLabel("Invalid Policy empty!!! Please delete again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -281,6 +323,7 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Policy deleted successfully.");
         txtPolicyItem.setText("");
+        System.out.println("Delete Written Successfully");
 
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error deleting policy: " + e.getMessage());
@@ -293,6 +336,12 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    private void AmendHospitalPoliciesAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_AmendHospitalPoliciesAncestorAdded
+        AmendHospitalPolicies.setText("Amend Hospital Policies");
+        AmendHospitalPolicies.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_AmendHospitalPoliciesAncestorAdded
+
+    
     /**
      * @param args the command line arguments
      */
@@ -314,11 +363,13 @@ public class Amendhospitalpolicies extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Amendhospitalpolicies().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AmendHospitalPolicies;
     private javax.swing.JComboBox<String> VisitingHours;
     private javax.swing.JComboBox<String> Weeks;
     private javax.swing.JButton btnAdd;

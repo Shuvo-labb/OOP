@@ -47,12 +47,14 @@ public class Viewprescription extends javax.swing.JFrame {
         btnsave = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
+        Viewprescription = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         txtPerscriptionID.setText("RH123");
         txtPerscriptionID.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +95,8 @@ public class Viewprescription extends javax.swing.JFrame {
 
         jLabel6.setText("Duration:");
 
+        btnAdd.setBackground(new java.awt.Color(0, 0, 255));
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +104,8 @@ public class Viewprescription extends javax.swing.JFrame {
             }
         });
 
+        btnsave.setBackground(new java.awt.Color(51, 51, 255));
+        btnsave.setForeground(new java.awt.Color(255, 255, 255));
         btnsave.setText("SAVE");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +113,8 @@ public class Viewprescription extends javax.swing.JFrame {
             }
         });
 
+        btndelete.setBackground(new java.awt.Color(51, 51, 255));
+        btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("DELETE");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,10 +122,23 @@ public class Viewprescription extends javax.swing.JFrame {
             }
         });
 
+        btnReturn.setBackground(new java.awt.Color(51, 51, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnActionPerformed(evt);
+            }
+        });
+
+        Viewprescription.setText("View Prescription");
+        Viewprescription.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ViewprescriptionAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -155,13 +176,18 @@ public class Viewprescription extends javax.swing.JFrame {
                         .addGap(75, 75, 75)
                         .addComponent(btndelete)
                         .addGap(49, 49, 49)
-                        .addComponent(btnReturn)))
+                        .addComponent(btnReturn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(Viewprescription)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(33, 33, 33)
+                .addComponent(Viewprescription)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtPerscriptionID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +217,7 @@ public class Viewprescription extends javax.swing.JFrame {
                     .addComponent(btnsave)
                     .addComponent(btndelete)
                     .addComponent(btnReturn))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -388,6 +414,11 @@ public class Viewprescription extends javax.swing.JFrame {
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    private void ViewprescriptionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ViewprescriptionAncestorAdded
+        Viewprescription.setText("Register Staff And Patients");
+        Viewprescription.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_ViewprescriptionAncestorAdded
+
      public void Viewaddfile(Viewscript P)
     {
       //The code to write the data to the text file..........
@@ -435,6 +466,7 @@ public class Viewprescription extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Viewprescription;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btndelete;

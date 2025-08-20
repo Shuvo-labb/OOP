@@ -4,6 +4,8 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,12 +52,18 @@ public class InventoryManagement extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
         txtStockStatus = new javax.swing.JTextField();
+        Inventorymanagement = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtstockin = new javax.swing.JTextField();
+        txtstockout = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 51));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         jLabel1.setText("Item ID:");
 
@@ -62,6 +71,8 @@ public class InventoryManagement extends javax.swing.JFrame {
 
         jLabel3.setText("Stock status:");
 
+        btnAdd.setBackground(new java.awt.Color(51, 51, 255));
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +80,8 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(0, 0, 255));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +89,8 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(51, 51, 255));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,12 +98,29 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
+        btnReturn.setBackground(new java.awt.Color(51, 51, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnActionPerformed(evt);
             }
         });
+
+        Inventorymanagement.setText("Inventory Management");
+        Inventorymanagement.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                InventorymanagementAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabel4.setText("Stock in:");
+
+        jLabel5.setText("Stock out:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -99,10 +131,16 @@ public class InventoryManagement extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAdd)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Inventorymanagement)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnUpdate)
                         .addGap(37, 37, 37)
@@ -111,16 +149,20 @@ public class InventoryManagement extends javax.swing.JFrame {
                         .addComponent(btnReturn)
                         .addGap(33, 33, 33))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtItemID, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStockStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtItemName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(txtstockin)
+                            .addComponent(txtstockout)
+                            .addComponent(txtItemID)
+                            .addComponent(txtStockStatus))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(34, 34, 34)
+                .addComponent(Inventorymanagement)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtItemID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,9 +172,17 @@ public class InventoryManagement extends javax.swing.JFrame {
                     .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtstockin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtstockout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtStockStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnUpdate)
@@ -165,7 +215,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,16 +231,24 @@ public class InventoryManagement extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     String id = txtItemID.getText().trim();
     String name = txtItemName.getText().trim();
+    String stockin = txtstockin.getText().trim();
+    String stockout = txtstockout.getText().trim();
     String status = txtStockStatus.getText().trim();
 
     if (id.isEmpty() || name.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        JLabel errorLabel = new JLabel("Invalid Program empty!!! Please add again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
     try (PrintWriter writer = new PrintWriter(new FileWriter("MedicalInventory.txt", true))) {
         writer.println("Item ID: " + id);
         writer.println("Item Name: " + name);
+        writer.println("Stock In: " + stockin);
+        writer.println("Stock Out: " + stockout);
         writer.println("Stock Status: " + status);
         writer.println("----------------------------------");
         JOptionPane.showMessageDialog(this, "Item added successfully.");
@@ -202,10 +260,16 @@ public class InventoryManagement extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
     String id = txtItemID.getText().trim();
     String name = txtItemName.getText().trim();
+    String stockin = txtstockin.getText().trim();
+    String stockout = txtstockout.getText().trim();
     String status = txtStockStatus.getText().trim();
 
     if (id.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Enter Item ID to update.");
+        JLabel errorLabel = new JLabel("Invalid Item ID empty!!! Please update again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -220,6 +284,8 @@ public class InventoryManagement extends javax.swing.JFrame {
                 found = true;
                 lines.add("Item ID: " + id);
                 lines.add("Item Name: " + name);
+                lines.add("Stock In: " + stockin);
+                lines.add("Item Name: " + stockout);
                 lines.add("Stock Status: " + status);
                 isTarget = true;
             } else if (isTarget && line.equals("----------------------------------")) {
@@ -254,6 +320,10 @@ public class InventoryManagement extends javax.swing.JFrame {
 
     if (id.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Enter Item ID to delete.");
+        JLabel errorLabel = new JLabel("Invalid Item ID empty!!! Please delete again.");
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -305,6 +375,11 @@ public class InventoryManagement extends javax.swing.JFrame {
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    private void InventorymanagementAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_InventorymanagementAncestorAdded
+        Inventorymanagement.setText("Inventory Management");
+        Inventorymanagement.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_InventorymanagementAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +406,7 @@ public class InventoryManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Inventorymanagement;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReturn;
@@ -338,10 +414,14 @@ public class InventoryManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtItemID;
     private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtStockStatus;
+    private javax.swing.JTextField txtstockin;
+    private javax.swing.JTextField txtstockout;
     // End of variables declaration//GEN-END:variables
 }

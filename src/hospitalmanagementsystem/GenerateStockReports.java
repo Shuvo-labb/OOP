@@ -4,13 +4,22 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 public class GenerateStockReports extends javax.swing.JFrame {
     
 DefaultListModel lm = new DefaultListModel();
 DefaultListModel si = new DefaultListModel();
 DefaultListModel ui = new DefaultListModel();
 DefaultListModel sf = new DefaultListModel();
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GenerateStockReports.class.getName());
 
     /**
@@ -23,6 +32,7 @@ DefaultListModel sf = new DefaultListModel();
         usingitems.setModel(ui);
         Statusfound.setModel(sf);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,15 +67,21 @@ DefaultListModel sf = new DefaultListModel();
         btnuseditems = new javax.swing.JButton();
         btnstatusreport = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
+        GenerateStockReports = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 255, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         jTextField1.setText("Items:");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setText("In stock:");
 
@@ -73,14 +89,8 @@ DefaultListModel sf = new DefaultListModel();
 
         jTextField4.setText("Status:");
 
-        Items.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Instockitems.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Useditems.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Statusreport.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        btnadditems.setBackground(new java.awt.Color(51, 51, 255));
+        btnadditems.setForeground(new java.awt.Color(255, 255, 255));
         btnadditems.setText("Add Items");
         btnadditems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,34 +98,16 @@ DefaultListModel sf = new DefaultListModel();
             }
         });
 
-        ItemsFound.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(ItemsFound);
 
-        Stockitems.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(Stockitems);
 
-        usingitems.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(usingitems);
 
-        Statusfound.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(Statusfound);
 
+        btnstockitems.setBackground(new java.awt.Color(51, 51, 255));
+        btnstockitems.setForeground(new java.awt.Color(255, 255, 255));
         btnstockitems.setText("Stock items");
         btnstockitems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +115,8 @@ DefaultListModel sf = new DefaultListModel();
             }
         });
 
+        btnuseditems.setBackground(new java.awt.Color(51, 51, 255));
+        btnuseditems.setForeground(new java.awt.Color(255, 255, 255));
         btnuseditems.setText("Used items");
         btnuseditems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +124,8 @@ DefaultListModel sf = new DefaultListModel();
             }
         });
 
+        btnstatusreport.setBackground(new java.awt.Color(51, 51, 255));
+        btnstatusreport.setForeground(new java.awt.Color(255, 255, 255));
         btnstatusreport.setText("Status report");
         btnstatusreport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,10 +133,23 @@ DefaultListModel sf = new DefaultListModel();
             }
         });
 
+        btnReturn.setBackground(new java.awt.Color(0, 0, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnActionPerformed(evt);
+            }
+        });
+
+        GenerateStockReports.setText("Generate Stock Reports");
+        GenerateStockReports.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                GenerateStockReportsAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -158,33 +167,37 @@ DefaultListModel sf = new DefaultListModel();
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Statusreport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Useditems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Instockitems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Items, 0, 159, Short.MAX_VALUE)
+                            .addComponent(Instockitems, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Useditems, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Statusreport, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(txtitems, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1)
-                        .addComponent(jScrollPane3))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(btnadditems)
-                .addGap(72, 72, 72)
-                .addComponent(btnstockitems)
-                .addGap(57, 57, 57)
-                .addComponent(btnuseditems)
-                .addGap(56, 56, 56)
-                .addComponent(btnstatusreport)
-                .addGap(38, 38, 38)
-                .addComponent(btnReturn)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(btnadditems)
+                        .addGap(72, 72, 72)
+                        .addComponent(btnstockitems)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnuseditems)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnstatusreport)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnReturn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(GenerateStockReports)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -192,7 +205,9 @@ DefaultListModel sf = new DefaultListModel();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(52, 52, 52)
+                        .addComponent(GenerateStockReports)
+                        .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -248,7 +263,7 @@ DefaultListModel sf = new DefaultListModel();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,31 +278,237 @@ DefaultListModel sf = new DefaultListModel();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
+    
     private void btnadditemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadditemsActionPerformed
-        Items.addItem(txtitems.getText());
-        lm.addElement(txtitems.getText());
+          
+    String item = txtitems.getText().trim(); 
+
+    // Predefined valid items
+    String[] validItems = { "Gloves", "Masks", "Paracetamol", "Syringe", "Bandage" };
+
+    // 1. Check if empty
+    if (item.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter an item.");
+        JLabel errorLabel = new JLabel("Invalid item: " + item);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // 2. Check if the item is in the valid list
+    boolean isValid = false;
+    for (String valid : validItems) {
+        if (valid.equalsIgnoreCase(item)) {
+            isValid = true;
+            break;
+        }
+    }
+
+    if (!isValid) {
+        JOptionPane.showMessageDialog(null, "Invalid item: " + item);
+        JLabel errorLabel = new JLabel("Invalid item: " + item);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Invalid item", JOptionPane.ERROR_MESSAGE);
+        return; // Do NOT add to JComboBox 
+    }
+
+    // Only add if valid
+    Items.addItem(item);
+    JOptionPane.showMessageDialog(null, "Item added to combo box!");
+    txtitems.setText(""); // Clear input
+    
+    //  Only add to JComboBox and JList if valid
+    Items.addItem(item);
+    lm.addElement(item);
+
+    // 3. Save valid item to file
+    try (PrintWriter writer = new PrintWriter(new FileWriter("GenerateStockReports.txt", true))) {
+        writer.println(item);
+        JOptionPane.showMessageDialog(null, "Item added.");
+        txtitems.setText(""); // clear input
+        System.out.println("Item Data Written Successfully");
+        
+     } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error saving item: " + e.getMessage());
+    }
+
     }//GEN-LAST:event_btnadditemsActionPerformed
 
     private void btnstockitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstockitemsActionPerformed
-        Instockitems.addItem(txtitems.getText());
-        si.addElement(txtitems.getText());
+
+        String stock = txtitems.getText().trim(); 
+        
+        // Predefined valid items
+        String[] validinstockItems = { "30", "1000", "2000", "300", "400" };
+
+    if (stock.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter a stock quality item.");
+        JLabel errorLabel = new JLabel("Invalid stock quality item: " + stock);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // 2. Check if the item is in the valid list
+    boolean isValid = false;
+    for (String valid : validinstockItems) {
+        if (valid.equalsIgnoreCase(stock)) {
+            isValid = true;
+            break;
+        }
+    }
+
+    if (!isValid) {
+        JOptionPane.showMessageDialog(null, "Invalid stock item: " + stock);
+        JLabel errorLabel = new JLabel("Invalid stock item: " + stock);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Invalid stock item", JOptionPane.ERROR_MESSAGE);
+        return; // Do NOT add to JComboBox 
+    }
+    
+    // Only add if valid
+    Instockitems.addItem(stock);
+    JOptionPane.showMessageDialog(null, "In stock Item added to combo box!");
+    txtitems.setText(""); // Clear input
+    
+    //  Only add to JComboBox and JList if valid
+    Instockitems.addItem(stock);
+    si.addElement(stock);
+    
+    try (PrintWriter writer = new PrintWriter(new FileWriter("GenerateStockReports.txt", true))) {
+        writer.println(stock);
+        JOptionPane.showMessageDialog(null, "In Stocks added.");
+        txtitems.setText(""); // clear input
+        System.out.println("Store item Data Written Successfully");
+      
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error writing to file: " + e.getMessage());
+     }
     }//GEN-LAST:event_btnstockitemsActionPerformed
 
     private void btnuseditemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnuseditemsActionPerformed
-        Useditems.addItem(txtitems.getText());
-        ui.addElement(txtitems.getText());
+
+        String useditems = txtitems.getText().trim(); 
+        
+        // Predefined valid items
+        String[] validinusedItems = { "20", "2000", "1000", "400", "200" };
+
+    if (useditems.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter a used items.");
+        JLabel errorLabel = new JLabel("Invalid stock quality item: " + useditems);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // 2. Check if the item is in the valid list
+    boolean isValid = false;
+    for (String valid : validinusedItems) {
+        if (valid.equalsIgnoreCase(useditems)) {
+            isValid = true;
+            break;
+        }
+    }
+
+    if (!isValid) {
+        JOptionPane.showMessageDialog(null, "Invalid stock item: " + useditems);
+        JLabel errorLabel = new JLabel("Invalid stock item: " + useditems);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Invalid stock item", JOptionPane.ERROR_MESSAGE);
+        return; // Do NOT add to JComboBox 
+    }
+    
+    // Only add if valid
+    Useditems.addItem(useditems);
+    JOptionPane.showMessageDialog(null, "Used Item added to combo box!");
+    txtitems.setText(""); // Clear input
+    
+    //  Only add to JComboBox and JList if valid
+    Useditems.addItem(useditems);
+    ui.addElement(useditems);
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter("GenerateStockReports.txt", true))) {
+        writer.println(useditems);
+        JOptionPane.showMessageDialog(null, "Used Items added.");
+        txtitems.setText(""); // clear input
+        System.out.println("Used Items Data Written Successfully");
+      
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error writing to file: " + e.getMessage());
+     }
     }//GEN-LAST:event_btnuseditemsActionPerformed
 
     private void btnstatusreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstatusreportActionPerformed
         Statusreport.addItem(txtitems.getText());
         sf.addElement(txtitems.getText());
+        
+        String statreport = txtitems.getText().trim(); 
+        
+        // Predefined valid items
+        String[] validinstatreport = { "Ok", "Critical", "Overwhelmed" };
+
+    if (statreport.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter a statusreport.");
+        JLabel errorLabel = new JLabel("Invalid stock quality item: " + statreport);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // 2. Check if the item is in the valid list
+    boolean isValid = false;
+    for (String valid : validinstatreport) {
+        if (valid.equalsIgnoreCase(statreport)) {
+            isValid = true;
+            break;
+        }
+    }
+    
+    if (!isValid) {
+        JOptionPane.showMessageDialog(null, "Invalid stock item: " + statreport);
+        JLabel errorLabel = new JLabel("Invalid stock item: " + statreport);
+        errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JOptionPane.showMessageDialog(null, errorLabel, "Invalid stock item", JOptionPane.ERROR_MESSAGE);
+        return; // Do NOT add to JComboBox 
+    }
+    
+    // Only add if valid
+    Statusreport.addItem(statreport);
+    JOptionPane.showMessageDialog(null, "Used Item added to combo box!");
+    txtitems.setText(""); // Clear input
+    
+    //  Only add to JComboBox and JList if valid
+    Statusreport.addItem(statreport);
+    sf.addElement(statreport);
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter("GenerateStockReports.txt", true))) {
+        writer.println(statreport);
+        JOptionPane.showMessageDialog(null, "Status report added.");
+        txtitems.setText(""); // clear input
+        System.out.println("Status Report Data Written Successfully");
+      
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error writing to file: " + e.getMessage());
+     }
     }//GEN-LAST:event_btnstatusreportActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
@@ -295,6 +516,15 @@ DefaultListModel sf = new DefaultListModel();
         admin.setVisible(true);                      // Show it
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void GenerateStockReportsAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_GenerateStockReportsAncestorAdded
+        GenerateStockReports.setText("Generate Stock Reports");
+        GenerateStockReports.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_GenerateStockReportsAncestorAdded
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +552,7 @@ DefaultListModel sf = new DefaultListModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel GenerateStockReports;
     private javax.swing.JComboBox<String> Instockitems;
     private javax.swing.JComboBox<String> Items;
     private javax.swing.JList<String> ItemsFound;

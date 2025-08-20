@@ -4,13 +4,20 @@
  */
 package hospitalmanagementsystem;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Registerstaffandpatients extends javax.swing.JFrame {
@@ -48,13 +55,29 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
         NurseRecords = new javax.swing.JComboBox<>();
         PatientRecords = new javax.swing.JComboBox<>();
         txtNewItem = new javax.swing.JTextField();
+        Registerstaffandpatients = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtPatientID = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtPatient = new javax.swing.JTextField();
+        txtNurse = new javax.swing.JTextField();
+        txtDoctor = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtDate = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtPatientGender = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        Additem.setBackground(new java.awt.Color(51, 51, 255));
+        Additem.setForeground(new java.awt.Color(255, 255, 255));
         Additem.setText("Add ");
         Additem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +85,8 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             }
         });
 
+        EditRecords.setBackground(new java.awt.Color(51, 51, 255));
+        EditRecords.setForeground(new java.awt.Color(255, 255, 255));
         EditRecords.setText("Edit");
         EditRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +94,8 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             }
         });
 
+        DeleteRecords.setBackground(new java.awt.Color(51, 51, 255));
+        DeleteRecords.setForeground(new java.awt.Color(255, 255, 255));
         DeleteRecords.setText("Delete");
         DeleteRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +103,8 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             }
         });
 
+        UpdateRecords.setBackground(new java.awt.Color(0, 0, 255));
+        UpdateRecords.setForeground(new java.awt.Color(255, 255, 255));
         UpdateRecords.setText("Update");
         UpdateRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +112,8 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             }
         });
 
+        btnReturn.setBackground(new java.awt.Color(0, 0, 255));
+        btnReturn.setForeground(new java.awt.Color(255, 255, 255));
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,74 +121,152 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Doctor Records");
+        jLabel1.setText("Doctor Records:");
 
-        jLabel2.setText("Nurse Records");
+        jLabel2.setText("Nurse Records:");
 
-        jLabel3.setText("Patient Records");
+        jLabel3.setText("Patient Records:");
+
+        PatientRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientRecordsActionPerformed(evt);
+            }
+        });
+
+        Registerstaffandpatients.setText("Register Staff And Patients");
+        Registerstaffandpatients.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                RegisterstaffandpatientsAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabel4.setText("Patient ID:");
+
+        jLabel5.setText("Patient Name:");
+
+        jLabel6.setText("Nurse Name:");
+
+        jLabel7.setText("Doctor Name:");
+
+        jLabel8.setText("Date:");
+
+        jLabel9.setText("Patient Gender:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(Additem)
-                                .addGap(35, 35, 35)
-                                .addComponent(EditRecords))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PatientRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(NurseRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPatientID, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(txtNurse)
+                                .addComponent(txtPatient)
+                                .addComponent(txtDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(txtDate)
+                                .addComponent(txtPatientGender))
+                            .addGap(69, 69, 69)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(193, 193, 193))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel1)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(DoctorRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(DeleteRecords)
-                        .addGap(36, 36, 36)
-                        .addComponent(UpdateRecords)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnReturn))
+                                        .addComponent(jLabel2))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(NurseRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(DoctorRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(PatientRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Additem)
+                                    .addGap(35, 35, 35))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addComponent(txtitems, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(txtNewItem)
+                                    .addGap(20, 20, 20))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(EditRecords)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(DeleteRecords)
+                                    .addGap(36, 36, 36)
+                                    .addComponent(UpdateRecords)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(btnReturn)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(txtitems, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtNewItem, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addGap(164, 164, 164)
+                        .addComponent(Registerstaffandpatients)))
+                .addGap(28, 28, 28))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(36, 36, 36)
+                .addComponent(Registerstaffandpatients)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(DoctorRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(jLabel4)
+                    .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DoctorRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(NurseRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtNurse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PatientRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(PatientRecords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtitems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                    .addComponent(txtitems, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewItem, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Additem)
                     .addComponent(EditRecords)
@@ -174,7 +283,7 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,195 +314,375 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdditemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdditemActionPerformed
-        DoctorRecords.addItem(txtitems.getText());
-        NurseRecords.addItem(txtitems.getText());
-        PatientRecords.addItem(txtitems.getText());
-        
-    String name = txtitems.getText().trim();           // e.g., "Dr. Smith"
+    String patientID = txtPatientID.getText().trim();  
+    String doctorName = txtDoctor.getText().trim();    
+    String nurseName = txtNurse.getText().trim();      
+    String patientName = txtPatient.getText().trim(); 
+    String patientGender = txtPatientGender.getText().trim();
+    String date = txtDate.getText().trim();   //  new date field
 
-    if (name.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please enter a name.");
+    // Show a simple record line in txtitems
+    txtitems.setText(doctorName + " - " + nurseName + " - " + patientName + " " + patientGender + " (Date: " + date + ")");
+
+    // 1. Patient ID empty check
+    if (patientID.isEmpty()) {
+        showError("Please enter a Patient ID.");
         return;
     }
 
+    // 2. Name empty check
+    if (doctorName.isEmpty() || nurseName.isEmpty() || patientName.isEmpty()) {
+        showError("Please fill in Doctor, Nurse, and Patient names.");
+        return;
+    }
+
+    if (patientGender.isEmpty()) {
+        showError("Please enter a gender.");
+        return;
+    }
+    
+    // 3. Date empty check
+    if (date.isEmpty()) {
+        showError("Please enter a Date.");
+        return;
+    }
+
+    // 4. Predefined valid names
+    String[] validName = { "Dr.Kang", "Dr.Ean", "Dr.Kim", "Dr.K", 
+                           "Mrs.Farah", "Mr.Kang", "Mrs.Sarah", "Mr.Selvi" };
+
+    // 5. Validation
+    if (!isValidName(doctorName, validName)) {
+        showError("Invalid doctor name: " + doctorName);
+        return;
+    }
+    if (!isValidName(nurseName, validName)) {
+        showError("Invalid nurse name: " + nurseName);
+        return;
+    }
+    if (!isValidName(patientName, validName)) {
+        showError("Invalid patient name: " + patientName);
+        return;
+    }
+
+    // 6. Add to combo boxes if not already present
+    if (((DefaultComboBoxModel<String>) DoctorRecords.getModel()).getIndexOf(doctorName) == -1) {
+        DoctorRecords.addItem(doctorName);
+    }
+    if (((DefaultComboBoxModel<String>) NurseRecords.getModel()).getIndexOf(nurseName) == -1) {
+        NurseRecords.addItem(nurseName);
+    }
+    if (((DefaultComboBoxModel<String>) PatientRecords.getModel()).getIndexOf(patientName) == -1) {
+        PatientRecords.addItem(patientName);
+    }
+
+    JOptionPane.showMessageDialog(null, "Record added successfully!");
+
+    // 7. Save to file
     try (PrintWriter writer = new PrintWriter(new FileWriter("RegisterStaffAndPatients.txt", true))) {
-        writer.println(name);
-        JOptionPane.showMessageDialog(null, "Record added.");
-        txtitems.setText(""); // clear input
+        writer.println("Patient ID   : " + patientID);
+        writer.println("Doctor Record: " + doctorName);
+        writer.println("Nurse Record : " + nurseName);
+        writer.println("Patient Record: " + patientName);
+        writer.println("Patient Gender: " + patientGender);
+        writer.println("Date         : " + date);   //  save date
+        writer.println("Record (txtitems): " + txtitems.getText());
+        writer.println("--------------------------------");
         System.out.println("Data Written Successfully");
-      
     } catch (IOException e) {
         e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error saving item: " + e.getMessage());
     }
+
+    // 8. Clear fields
+    txtPatientID.setText("");
+    txtDoctor.setText("");
+    txtNurse.setText("");
+    txtPatient.setText("");
+    txtDate.setText("");   //  clear date
+    txtPatientGender.setText("");
+    txtitems.setText("");
+}
+
+// Helper method for showing red error messages
+    private void showError(String message) {
+    JLabel errorLabel = new JLabel(message);
+    errorLabel.setForeground(Color.RED);
+    errorLabel.setFont(new Font("Arial", Font.BOLD, 14));
+    JOptionPane.showMessageDialog(null, errorLabel, "Error", JOptionPane.ERROR_MESSAGE);
+}
+
+// Helper method for validating names
+    private boolean isValidName(String name, String[] validList) {
+    for (String valid : validList) {
+        if (valid.equalsIgnoreCase(name)) {
+            return true;
+        }
+    }
+    return false;
     }//GEN-LAST:event_AdditemActionPerformed
 
     private void EditRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditRecordsActionPerformed
-        String newText = txtitems.getText();
+   String patientID = txtPatientID.getText().trim();  
 
-    int docIndex = DoctorRecords.getSelectedIndex();
-    if (docIndex != -1) {
-        DoctorRecords.insertItemAt(newText, docIndex);
-        DoctorRecords.removeItemAt(docIndex + 1);
-       }
-
-    int nurseIndex = NurseRecords.getSelectedIndex();
-    if (nurseIndex != -1) {
-        NurseRecords.insertItemAt(newText, nurseIndex);
-        NurseRecords.removeItemAt(nurseIndex + 1);
-       }
-
-    int patientIndex = PatientRecords.getSelectedIndex();
-    if (patientIndex != -1) {
-        PatientRecords.insertItemAt(newText, patientIndex);
-        PatientRecords.removeItemAt(patientIndex + 1);
-       }
-    
-    String oldName = txtitems.getText().trim();           // e.g., "Dr. Smith"
-    String newName = txtNewItem.getText().trim();         // e.g., "Dr. John"
-
-    if (oldName.isEmpty() || newName.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please enter both old and new names.");
+    if (patientID.isEmpty()) {
+        showError("Please enter a Patient ID to edit.");
         return;
     }
-
-    List<String> updatedLines = new ArrayList<>();
 
     try (BufferedReader reader = new BufferedReader(new FileReader("RegisterStaffAndPatients.txt"))) {
         String line;
         boolean found = false;
 
         while ((line = reader.readLine()) != null) {
-            if (line.equalsIgnoreCase(oldName)) {
-                updatedLines.add(newName);  // replace line
+            if (line.startsWith("Patient ID   : " + patientID)) {
                 found = true;
-            } else {
-                updatedLines.add(line);  // keep as-is
+
+                // Read next lines of this record
+                String doctorName  = safeReadValue(reader.readLine());
+                String nurseName   = safeReadValue(reader.readLine());
+                String patientName = safeReadValue(reader.readLine());
+                String patientGender = safeReadValue(reader.readLine());
+                String date        = safeReadValue(reader.readLine());
+                String txtitemsVal = safeReadValue(reader.readLine());
+
+                // Fill text fields
+                txtDoctor.setText(doctorName);
+                txtNurse.setText(nurseName);
+                txtPatient.setText(patientName);
+                txtPatientGender.setText(patientGender);
+                txtDate.setText(date);
+
+                // txtitems = Doctor - Nurse - Patient (Date)
+                txtitems.setText(doctorName + " - " + nurseName + " - " + patientName +  " " + patientGender + " (Date: " + date + ")");
+
+                // txtNewItem = Patient - Nurse - Doctor (Date)
+                txtNewItem.setText(patientName +  " " + patientGender + " - " + nurseName + " - " + doctorName + " (Date: " + date + ")");
+
+                // Add to combo boxes if not present and select
+                DefaultComboBoxModel<String> doctorModel = (DefaultComboBoxModel<String>) DoctorRecords.getModel();
+                if (doctorModel.getIndexOf(doctorName) == -1) {
+                    DoctorRecords.addItem(doctorName);
+                }
+                DoctorRecords.setSelectedItem(doctorName);
+
+                DefaultComboBoxModel<String> nurseModel = (DefaultComboBoxModel<String>) NurseRecords.getModel();
+                if (nurseModel.getIndexOf(nurseName) == -1) {
+                    NurseRecords.addItem(nurseName);
+                }
+                NurseRecords.setSelectedItem(nurseName);
+
+                DefaultComboBoxModel<String> patientModel = (DefaultComboBoxModel<String>) PatientRecords.getModel();
+                if (patientModel.getIndexOf(patientName) == -1) {
+                    PatientRecords.addItem(patientName);
+                }
+                PatientRecords.setSelectedItem(patientName);
+
+                JOptionPane.showMessageDialog(null, 
+                    "Record loaded for Patient ID: " + patientID + 
+                    ". You can now edit and click Update.");
+                break;
             }
         }
 
         if (!found) {
-            JOptionPane.showMessageDialog(null, "Record not found to update.");
-            return;
+            showError("No record found for Patient ID: " + patientID);
         }
-        
+        System.out.println("Edit Written Successfully");
 
     } catch (IOException e) {
         e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error reading the file.");
-        return;
+        JOptionPane.showMessageDialog(null, "Error loading record: " + e.getMessage());
     }
+}
 
-    // Write back to the file with updated content
-    try (PrintWriter writer = new PrintWriter(new FileWriter("RegisterStaffAndPatients.txt"))) {
-        for (String updatedLine : updatedLines) {
-            writer.println(updatedLine);
-        }
-        JOptionPane.showMessageDialog(null, "Record updated successfully.");
-        txtitems.setText("");
-        txtNewItem.setText("");
-        System.out.println("Update Data Written Successfully");
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error writing to the file.");
-      }
+// Helper method to safely extract value after ": "
+    private String safeReadValue(String line) {
+    if (line != null && line.contains(": ")) {
+        return line.split(": ", 2)[1];
+    }
+    return "";
     }//GEN-LAST:event_EditRecordsActionPerformed
 
     private void DeleteRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordsActionPerformed
-       // Remove selected item from DoctorRecords
-      String itemToDelete = txtitems.getText();
+       String patientID = txtPatientID.getText().trim();
 
-    DoctorRecords.removeItem(itemToDelete);
-    NurseRecords.removeItem(itemToDelete);
-    PatientRecords.removeItem(itemToDelete);
-    
-    String name = txtitems.getText().trim();
-
-    if (name.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please enter a name to delete.");
+    if (patientID.isEmpty()) {
+        showError("Please enter a Patient ID to delete.");
         return;
     }
 
-    List<String> lines = new ArrayList<>();
+    try {
+        File inputFile = new File("RegisterStaffAndPatients.txt");
+        File tempFile = new File("temp.txt");
 
-    try (BufferedReader reader = new BufferedReader(new FileReader("RegisterStaffAndPatients.txt"))) {
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        PrintWriter writer = new PrintWriter(new FileWriter(tempFile));
+
         String line;
+        boolean found = false;
+
         while ((line = reader.readLine()) != null) {
-            if (!line.equalsIgnoreCase(name)) {
-                lines.add(line);
+            if (line.startsWith("Patient ID   : " + patientID)) {
+                found = true;
+                // Skip the next 7 lines (Doctor, Nurse, Patient, PatientGender, Date, txtitems, txtNewItem) + separator
+                for (int i = 0; i < 8; i++) {
+                    reader.readLine();
+                }
+                // Record deleted, do not write to temp file
+            } else {
+                writer.println(line);
             }
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    try (PrintWriter writer = new PrintWriter(new FileWriter("RegisterStaffAndPatients.txt"))) {
-        for (String line : lines) {
-            writer.println(line);
+        reader.close();
+        writer.close();
+
+        // Replace original file with updated temp file
+        if (!inputFile.delete()) {
+            JOptionPane.showMessageDialog(null, "Could not delete original file.");
+            return;
         }
-        JOptionPane.showMessageDialog(null, "Record deleted (if it existed).");
-        txtitems.setText("");
+        if (!tempFile.renameTo(inputFile)) {
+            JOptionPane.showMessageDialog(null, "Could not rename temp file.");
+            return;
+        }
+
+        if (found) {
+            JOptionPane.showMessageDialog(null, "Record deleted successfully!");
+
+            // Clear UI fields
+            txtPatientID.setText("");
+            txtDoctor.setText("");
+            txtNurse.setText("");
+            txtPatient.setText("");
+            txtPatientGender.setText("");
+            txtDate.setText("");
+            txtitems.setText("");
+            txtNewItem.setText("");
+
+            // Optionally remove from combo boxes (if you want)
+            DoctorRecords.setSelectedIndex(-1);
+            NurseRecords.setSelectedIndex(-1);
+            PatientRecords.setSelectedIndex(-1);
+
+        } else {
+            showError("Patient ID not found: " + patientID);
+        }
         System.out.println("Delete Written Successfully");
+
     } catch (IOException e) {
         e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error deleting record: " + e.getMessage());
     }
     }//GEN-LAST:event_DeleteRecordsActionPerformed
 
     private void UpdateRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecordsActionPerformed
       
-        String newItem = txtitems.getText();  
-     // Update selected item in DoctorRecords
-    int docIndex = DoctorRecords.getSelectedIndex();
-    if (docIndex != -1) {
-        DoctorRecords.insertItemAt(newItem, docIndex);
-        DoctorRecords.removeItemAt(docIndex + 1);
-     }
+    String patientID = txtPatientID.getText().trim();  
+    String doctorName = txtDoctor.getText().trim();    
+    String nurseName = txtNurse.getText().trim();      
+    String patientName = txtPatient.getText().trim(); 
+    String patientGender = txtPatientGender.getText().trim();
+    String date = txtDate.getText().trim();  
 
-    // Update selected item in NurseRecords
-    int nurseIndex = NurseRecords.getSelectedIndex();
-    if (nurseIndex != -1) {
-        NurseRecords.insertItemAt(newItem, nurseIndex);
-        NurseRecords.removeItemAt(nurseIndex + 1);
-     }
-
-    // Update selected item in PatientRecords
-    int patientIndex = PatientRecords.getSelectedIndex();
-    if (patientIndex != -1) {
-        PatientRecords.insertItemAt(newItem, patientIndex);
-        PatientRecords.removeItemAt(patientIndex + 1);
-     }
-    
-    String oldName = txtitems.getText().trim();
-    String newName = txtNewItem.getText().trim();
-
-    if (oldName.isEmpty() || newName.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Enter both old and new names.");
+    if (patientID.isEmpty()) {
+        showError("Please enter a Patient ID to update.");
         return;
     }
 
-    List<String> lines = new ArrayList<>();
+    // Original values for txtitems
+    String formattedRecord = patientName + " " + patientGender + " - " + nurseName + " - " + doctorName + "  (Date: " + date + ")";
 
-    try (BufferedReader reader = new BufferedReader(new FileReader("RegisterStaffAndPatients.txt"))) {
+    // Updated values for txtNewItem (assuming the user edits these fields)
+    String newDoctorName  = txtDoctor.getText().trim();   // Or from separate "new" text fields
+    String newNurseName   = txtNurse.getText().trim();
+    String newPatientName = txtPatient.getText().trim();
+    String newPatientGender = txtPatientGender.getText().trim();
+
+    String newformattedRecord = newPatientName + " " + newPatientGender + " - " + newNurseName + " - " + newDoctorName + "  (Date: " + date + ")";
+
+    // ✅ Update text fields
+    txtitems.setText(formattedRecord);
+    txtNewItem.setText(newformattedRecord);
+
+    try {
+        File inputFile = new File("RegisterStaffAndPatients.txt");
+        File tempFile = new File("temp.txt");
+
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        PrintWriter writer = new PrintWriter(new FileWriter(tempFile));
+
         String line;
+        boolean found = false;
+
         while ((line = reader.readLine()) != null) {
-            if (line.equalsIgnoreCase(oldName)) {
-                lines.add(newName);
+            if (line.startsWith("Patient ID   : " + patientID)) {
+                found = true;
+
+                // Skip old record lines
+                reader.readLine(); // Doctor Record
+                reader.readLine(); // Nurse Record
+                reader.readLine(); // Patient Record
+                reader.readLine(); // Patient Gender
+                reader.readLine(); // Date
+                reader.readLine(); // txtitems
+                reader.readLine(); // txtNewItem
+                reader.readLine(); // Separator
+
+                // Write updated record
+                writer.println("Patient ID   : " + patientID);
+                writer.println("Doctor Record: " + doctorName);
+                writer.println("Nurse Record : " + nurseName);
+                writer.println("Patient Record: " + patientName);
+                writer.println("Patient Gender: " + patientGender);
+                writer.println("Date         : " + date);
+                writer.println("Record (txtitems): " + formattedRecord);
+                writer.println("txtNewItem   : " + newformattedRecord);
+                writer.println("--------------------------------");
             } else {
-                lines.add(line);
+                writer.println(line);
             }
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    try (PrintWriter writer = new PrintWriter(new FileWriter("RegisterStaffAndPatients.txt"))) {
-        for (String line : lines) {
-            writer.println(line);
+        reader.close();
+        writer.close();
+
+        if (!inputFile.delete()) {
+            JOptionPane.showMessageDialog(null, "Could not delete original file.");
+            return;
         }
-        JOptionPane.showMessageDialog(null, "Record updated (if it existed).");
-        txtitems.setText("");
-        txtNewItem.setText("");
+        if (!tempFile.renameTo(inputFile)) {
+            JOptionPane.showMessageDialog(null, "Could not rename temp file.");
+            return;
+        }
+
+        if (found) {
+            // Update combo boxes if new names
+            if (((DefaultComboBoxModel<String>) DoctorRecords.getModel()).getIndexOf(doctorName) == -1) {
+                DoctorRecords.addItem(doctorName);
+            }
+            if (((DefaultComboBoxModel<String>) NurseRecords.getModel()).getIndexOf(nurseName) == -1) {
+                NurseRecords.addItem(nurseName);
+            }
+            if (((DefaultComboBoxModel<String>) PatientRecords.getModel()).getIndexOf(patientName) == -1) {
+                PatientRecords.addItem(patientName);
+            }
+
+            // Select updated names
+            DoctorRecords.setSelectedItem(doctorName);
+            NurseRecords.setSelectedItem(nurseName);
+            PatientRecords.setSelectedItem(patientName);
+
+            JOptionPane.showMessageDialog(null, "Record updated successfully!");
+        } else {
+            showError("Patient ID not found: " + patientID);
+        }
+        System.out.println("Update Written Successfully");
+
     } catch (IOException e) {
         e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error updating record: " + e.getMessage());
     }
     }//GEN-LAST:event_UpdateRecordsActionPerformed
 
@@ -402,6 +691,15 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
         admin.setVisible(true);                      // Show it
         this.dispose();                              // Close the current window
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void RegisterstaffandpatientsAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_RegisterstaffandpatientsAncestorAdded
+        Registerstaffandpatients.setText("Register Staff And Patients");
+        Registerstaffandpatients.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_RegisterstaffandpatientsAncestorAdded
+
+    private void PatientRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientRecordsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PatientRecordsActionPerformed
     
     
     
@@ -438,14 +736,27 @@ public class Registerstaffandpatients extends javax.swing.JFrame {
     private javax.swing.JButton EditRecords;
     private javax.swing.JComboBox<String> NurseRecords;
     private javax.swing.JComboBox<String> PatientRecords;
+    private javax.swing.JLabel Registerstaffandpatients;
     private javax.swing.JButton UpdateRecords;
     private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtDoctor;
     private javax.swing.JTextField txtNewItem;
+    private javax.swing.JTextField txtNurse;
+    private javax.swing.JTextField txtPatient;
+    private javax.swing.JTextField txtPatientGender;
+    private javax.swing.JTextField txtPatientID;
     private javax.swing.JTextField txtitems;
     // End of variables declaration//GEN-END:variables
 }
