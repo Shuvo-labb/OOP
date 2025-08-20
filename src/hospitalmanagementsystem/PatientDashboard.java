@@ -9,14 +9,19 @@ package hospitalmanagementsystem;
  * @author shaik
  */
 public class PatientDashboard extends javax.swing.JFrame {
-    
+
+    private String patientId;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PatientDashboard.class.getName());
 
-    /**
-     * Creates new form PatientDashboard
-     */
     public PatientDashboard() {
         initComponents();
+    }
+
+    public PatientDashboard(String patientId) {
+        this(); // Calls the default constructor → runs initComponents()
+        this.patientId = patientId;
+        // Optional: Update a label
+        // jLabelWelcome.setText("Welcome, " + patientId);
     }
 
     /**
@@ -49,6 +54,11 @@ public class PatientDashboard extends javax.swing.JFrame {
         btnmanageinv1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnmanageinv1.setForeground(new java.awt.Color(0, 0, 0));
         btnmanageinv1.setText("Book Appointment");
+        btnmanageinv1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmanageinv1ActionPerformed(evt);
+            }
+        });
 
         btnmanageinv2.setBackground(new java.awt.Color(255, 255, 51));
         btnmanageinv2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -83,69 +93,66 @@ public class PatientDashboard extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnmanageinv1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnmanageinv)
                         .addGap(198, 198, 198))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnmanageinv5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(124, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnmanageinv2)
+                        .addGap(142, 142, 142))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnmanageinv1)
+                        .addGap(166, 166, 166))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnmanageinv3)
-                        .addGap(243, 243, 243))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(btnmanageinv4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
-                .addComponent(btnmanageinv2)
-                .addGap(222, 222, 222))
+                        .addGap(192, 192, 192))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnmanageinv4)
+                        .addGap(159, 159, 159))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(btnmanageinv1)
-                        .addGap(87, 87, 87)
-                        .addComponent(btnmanageinv4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(btnmanageinv))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(btnmanageinv2)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnmanageinv5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addComponent(btnmanageinv3)
-                        .addGap(209, 209, 209))))
+                .addGap(70, 70, 70)
+                .addComponent(btnmanageinv)
+                .addGap(18, 18, 18)
+                .addComponent(btnmanageinv1)
+                .addGap(18, 18, 18)
+                .addComponent(btnmanageinv4)
+                .addGap(18, 18, 18)
+                .addComponent(btnmanageinv5)
+                .addGap(18, 18, 18)
+                .addComponent(btnmanageinv2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnmanageinv3)
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnmanageinv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageinv1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmanageinv1ActionPerformed
+
     private void btnmanageinv3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageinv3ActionPerformed
-        new LoginFrame().setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnmanageinv3ActionPerformed
 
     /**
@@ -164,13 +171,15 @@ public class PatientDashboard extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PatientDashboard().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            new PatientDashboard().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

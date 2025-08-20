@@ -1,0 +1,3 @@
+REC1755576056169,P002,DOC001,2025-08-19,bla,Female,PJ,bla,bla
+REC1755614794331,P001,null,2025-08-19,Diabetes,Male,KL,Acute condition requiring immediate treatment,Oral medication regimen
+REC1755668651710,P001,null,2025-08-20,Diabetes,Male,KL,Advanced stage, aggressive treatment needed,Physical therapy

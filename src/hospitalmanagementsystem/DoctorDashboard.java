@@ -6,13 +6,17 @@
 package hospitalmanagementsystem;
 
 // Import statements needed for the functionality
+
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import java.util.List; // Import List
-import hospitalmanagementsystem.Main; // Explicitly import Main
-import hospitalmanagementsystem.Patient; // Explicitly import Patient
-
+import hospitalmanagementsystem.Main; // Ensure this is present
+import hospitalmanagementsystem.Appointment;
+import java.util.List;
+// ... other imports ...
 
 /**
  *
@@ -20,14 +24,150 @@ import hospitalmanagementsystem.Patient; // Explicitly import Patient
  */
 public class DoctorDashboard extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DoctorDashboard.class.getName());
+    private void generateReportByDisease() {
+    // Prompt the user to enter the disease name
+    String disease = JOptionPane.showInputDialog(this, "Enter the disease to filter:", "Generate Report by Disease", JOptionPane.PLAIN_MESSAGE);
 
+    if (disease == null || disease.trim().isEmpty()) {
+        return; // User cancelled or entered nothing
+    }
+
+    // Filter patients by disease
+    List<Patient> filteredPatients = new ArrayList<>();
+    for (Patient patient : Main.patientList) {
+        if (patient.getMedicalHistory().toLowerCase().contains(disease.toLowerCase())) {
+            filteredPatients.add(patient);
+        }
+    }
+
+    // Display the filtered patients
+    if (filteredPatients.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No patients found with the specified disease.", "Report Results", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        StringBuilder report = new StringBuilder("Patients with Disease: " + disease + "\n\n");
+        for (Patient patient : filteredPatients) {
+            report.append("ID: ").append(patient.getId()).append("\n");
+            report.append("Name: ").append(patient.getName()).append("\n");
+            report.append("Age: ").append(patient.getAge()).append("\n");
+            report.append("Gender: ").append(patient.getGender()).append("\n");
+            report.append("Medical History: ").append(patient.getMedicalHistory()).append("\n\n");
+        }
+
+        JTextArea textArea = new JTextArea(report.toString());
+        textArea.setEditable(false); // Make it read-only
+        textArea.setColumns(40); // Set approximate width
+        textArea.setRows(20);    // Set approximate height
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        JOptionPane.showMessageDialog(this, scrollPane, "Medical Report - By Disease", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+    
+    
+    
+    private void generateReportByGender() {
+    // Prompt the user to select the gender
+    String[] genders = {"Male", "Female", "Other"};
+    String selectedGender = (String) JOptionPane.showInputDialog(
+        this,
+        "Select Gender:",
+        "Generate Report by Gender",
+        JOptionPane.PLAIN_MESSAGE,
+        null,
+        genders,
+        genders[0]
+    );
+
+    if (selectedGender == null) {
+        return; // User cancelled the dialog
+    }
+
+    // Filter patients by gender
+    List<Patient> filteredPatients = new ArrayList<>();
+    for (Patient patient : Main.patientList) {
+        if (patient.getGender().equalsIgnoreCase(selectedGender)) {
+            filteredPatients.add(patient);
+        }
+    }
+
+    // Display the filtered patients
+    if (filteredPatients.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No patients found with the specified gender.", "Report Results", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        StringBuilder report = new StringBuilder("Patients of Gender: " + selectedGender + "\n\n");
+        for (Patient patient : filteredPatients) {
+            report.append("ID: ").append(patient.getId()).append("\n");
+            report.append("Name: ").append(patient.getName()).append("\n");
+            report.append("Age: ").append(patient.getAge()).append("\n");
+            report.append("Medical History: ").append(patient.getMedicalHistory()).append("\n\n");
+        }
+
+        JTextArea textArea = new JTextArea(report.toString());
+        textArea.setEditable(false); // Make it read-only
+        textArea.setColumns(40); // Set approximate width
+        textArea.setRows(20);    // Set approximate height
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        JOptionPane.showMessageDialog(this, scrollPane, "Medical Report - By Gender", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+    
+    
+    
+    
+    private void generateReportByRegion() {
+    // Prompt the user to enter the region
+    String region = JOptionPane.showInputDialog(this, "Enter the region to filter:", "Generate Report by Region", JOptionPane.PLAIN_MESSAGE);
+
+    if (region == null || region.trim().isEmpty()) {
+        return; // User cancelled or entered nothing
+    }
+
+    // Filter patients by region
+    List<Patient> filteredPatients = new ArrayList<>();
+    for (Patient patient : Main.patientList) {
+        if (patient.getRegion().equalsIgnoreCase(region)) {
+            filteredPatients.add(patient);
+        }
+    }
+
+    // Display the filtered patients
+    if (filteredPatients.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No patients found in the specified region.", "Report Results", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        StringBuilder report = new StringBuilder("Patients in Region: " + region + "\n\n");
+        for (Patient patient : filteredPatients) {
+            report.append("ID: ").append(patient.getId()).append("\n");
+            report.append("Name: ").append(patient.getName()).append("\n");
+            report.append("Age: ").append(patient.getAge()).append("\n");
+            report.append("Medical History: ").append(patient.getMedicalHistory()).append("\n\n");
+        }
+
+        JTextArea textArea = new JTextArea(report.toString());
+        textArea.setEditable(false); // Make it read-only
+        textArea.setColumns(40); // Set approximate width
+        textArea.setRows(20);    // Set approximate height
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        JOptionPane.showMessageDialog(this, scrollPane, "Medical Report - By Region", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+    
+
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DoctorDashboard.class.getName());
+    private String doctorId; // this line stores the current doctor's ID
     /**
      * Creates new form DoctorDashboard
      */
     public DoctorDashboard() {
         initComponents();
     }
+    
+    public DoctorDashboard(String doctorId) {
+    this(); // Call the default constructor to run initComponents()
+    this.doctorId = doctorId; // Set the doctor ID
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,45 +339,32 @@ public class DoctorDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnconfirmappointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconfirmappointmentsActionPerformed
-        JOptionPane.showMessageDialog(this, "Doctor: View Patient Records");
+        
+        new AppointmentConfirmationForm(doctorId).setVisible(true);
+    
     }//GEN-LAST:event_btnconfirmappointmentsActionPerformed
 
+    
+    
+    
     private void btnpatientrecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpatientrecordsActionPerformed
-        List<Patient> patient = Main.patientList;
-
-    if (patient == null || patient.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No patient records found.", "Patient Records", JOptionPane.INFORMATION_MESSAGE);
-        return;
-}
-
-    // Build a string representation of all patients
-    StringBuilder records = new StringBuilder("Patient Records:\n-------------------\n");
-    for (Patient p : patient) {
-        records.append("ID: ").append(p.getId()).append("\n");
-        records.append("Name: ").append(p.getName()).append("\n");
-        records.append("Age: ").append(p.getAge()).append("\n");
-        records.append("Gender: ").append(p.getGender()).append("\n");
-        records.append("Medical History: ").append(p.getMedicalHistory()).append("\n");
-        records.append("-------------------\n");
-    }
-
-    // Display in a scrollable text area
-    JTextArea textArea = new JTextArea(records.toString());
-    textArea.setEditable(false); // Make it read-only
-    textArea.setColumns(40); // Set approximate width
-    textArea.setRows(20);    // Set approximate height
-    JScrollPane scrollPane = new JScrollPane(textArea);
-    // Show the dialog
-    JOptionPane.showMessageDialog(this, scrollPane, "Patient Records", JOptionPane.INFORMATION_MESSAGE);
-
+        // Open the PatientRecordsForm to display all patients
+        PatientRecordsForm recordsForm = new PatientRecordsForm();
+        recordsForm.loadAllPatientRecords(); // Call method to load all patients
+        recordsForm.setVisible(true);
     }//GEN-LAST:event_btnpatientrecordsActionPerformed
 
     private void btnprescribemedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprescribemedicationActionPerformed
-        // TODO add your handling code here:
+        new PrescriptionForm().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnprescribemedicationActionPerformed
 
     private void btnmedicalreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmedicalreportActionPerformed
-        // TODO add your handling code here:
+        // Display options to create or view medical records
+        new CreateMedicalReportform().setVisible(true);
+        this.dispose();
+
+
     }//GEN-LAST:event_btnmedicalreportActionPerformed
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
@@ -257,7 +384,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

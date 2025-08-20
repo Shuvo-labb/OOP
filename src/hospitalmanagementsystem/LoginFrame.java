@@ -6,22 +6,10 @@ package hospitalmanagementsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane; // Add this line
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-// Add these import statements near the top of LoginFrame.java
-import hospitalmanagementsystem.DoctorDashboard;
-import hospitalmanagementsystem.AdminDashboard; // Add when ready
-import hospitalmanagementsystem.PatientDashboard; // Add when ready
-import hospitalmanagementsystem.GuestDashboard; // Add when ready
+import java.util.Scanner;
+import javax.swing.*;
 
 // Rest of your code...
 
@@ -35,16 +23,52 @@ public class LoginFrame extends javax.swing.JFrame {
     private User[] users = new User[100];  // Max 100 users
     private int userCount = 0;
     private void loadUsers() {
-    try (Scanner scanner = new Scanner(new File("users.txt"))) {
+    try (Scanner scanner = new Scanner(new File("C:/oopagm/HospitalManagementSystem/users.txt"))) {
+        userCount = 0; // Reset counter before loading
+        System.out.println("Loading users from C:/oopagm/HospitalManagementSystem/users.txt");
+
         while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
+            String line = scanner.nextLine().trim();
+            if (line.isEmpty()) continue;
+
             String[] parts = line.split(",");
-            if (parts.length == 3) {
-                users[userCount++] = new User(parts[0], parts[1], parts[2]);
+            if (parts.length >= 3) {
+                String role = parts[0].trim();
+                String username = parts[1].trim();
+                String password = parts[2].trim();
+
+                System.out.println("Found user: " + username + ", Role: " + role);
+
+                switch (role) {
+                    case "Admin":
+                        users[userCount++] = new Admin(username, password);
+                        break;
+                    case "Doctor":
+                        if (parts.length >= 4) {
+                            String doctorId = parts[3].trim();
+                            users[userCount++] = new Doctor(username, password, doctorId);
+                        } else {
+                            System.out.println("Doctor ID missing: " + username);
+                        }
+                        break;
+                    case "Patient":
+                        if (parts.length >= 4) {
+                            String patientId = parts[3].trim();
+                            users[userCount++] = new Patient(username, password, patientId);
+                        } else {
+                            System.out.println("Patient ID missing: " + username);
+                        }
+                        break;
+                    case "Guest":
+                        users[userCount++] = new Guest(username, password);
+                        break;
+                }
             }
         }
+        System.out.println("Total users loaded: " + userCount);
     } catch (FileNotFoundException e) {
-        System.out.println("users.txt not found. Starting with empty user list.");
+        System.out.println("Error: users.txt not found at C:/oopagm/HospitalManagementSystem/users.txt");
+        JOptionPane.showMessageDialog(this, "Users file not found. Login functionality will not work.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
     /**
@@ -226,51 +250,55 @@ public class LoginFrame extends javax.swing.JFrame {
         String username = txtUsername.getText().trim();
         String password = new String(txtPassword.getPassword()).trim();
         String role = cmbRole.getSelectedItem().toString();
-        
-        
-        if (username.isEmpty() || password.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "Please enter both username and password!",
-                    "Input Error",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
+
+        System.out.println("Login attempt - Username: " + username + ", Role: " + role);
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter both username and password!");
             return;
-        } 
-        boolean loginSuccess = false;
-        String matchedRole = "";
+        }
+
+        // Debug: Print loaded users count
+        System.out.println("Checking against " + userCount + " loaded users");
+
+        // Try to find matching user
+        User matchedUser = null;
+        boolean foundUsername = false;
+        boolean foundRole = false;
+
         for (int i = 0; i < userCount; i++) {
             User u = users[i];
-            if (u.getUsername().equals(username) &&
-                u.getPassword().equals(password) &&
-                u.getRole().equals(role)) {
-                loginSuccess = true;
-                matchedRole = role;
-                break;
+            if (u != null) {
+                // Debug each user we're checking against
+                System.out.println("Checking user: " + u.getUsername() + ", Role: " + u.getRole());
+
+                if (u.getUsername().equals(username)) {
+                    foundUsername = true;
+                    if (u.getRole().equals(role)) {
+                        foundRole = true;
+                        if (u.getPassword().equals(password)) {
+                            matchedUser = u;
+                            break;
+                        }
+                    }
+                }
             }
         }
-        if (loginSuccess) {
+
+        if (matchedUser != null) {
             JOptionPane.showMessageDialog(this, "Login Successful!\nWelcome, " + username);
-            switch (matchedRole) {
-                case "Doctor":
-                    new DoctorDashboard().setVisible(true);
-                    break;
-                case "Admin":
-                    new AdminDashboard().setVisible(true);
-                    break;
-                case "Patient":
-                    new PatientDashboard().setVisible(true);
-                    break;
-                case "Guest":
-                    new GuestDashboard().setVisible(true);
-                    break;
-            }
+            matchedUser.showDashboard();
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "Invalid username, password, or role!", 
-                    "Login Failed", 
-                    JOptionPane.ERROR_MESSAGE);
+            // Provide more specific error messages
+            if (!foundUsername) {
+                JOptionPane.showMessageDialog(this, "Username not found!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            } else if (!foundRole) {
+                JOptionPane.showMessageDialog(this, "Incorrect role for this username!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }
         }
-      
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed

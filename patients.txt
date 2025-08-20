@@ -1,2 +1,3 @@
-P001,John Doe,30,Male,123-456-7890,Hypertension
-P002,Jane Smith,25,Female,098-765-4321,Diabetes
+P001,John Doe,30,Male,Hypertension,KL
+P002,Jane Smith,25,Female,Diabetes,PJ
+P003,Bob Johnson,45,Male,Heart Disease,JB

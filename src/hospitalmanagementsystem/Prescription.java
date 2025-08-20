@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 // File: Prescription.java
+// File: Prescription.java
 package hospitalmanagementsystem;
 
 /**
@@ -13,32 +14,41 @@ public class Prescription {
     private String prescriptionId;
     private String patientId;  // Links to Patient
     private String doctorId;   // Links to Doctor
-    private String medication;
+    private String medicineName;
     private String dosage;
-    private int quantity;
+    private String date;       // Added: date field
 
-    public Prescription(String prescriptionId, String patientId, String doctorId, String medication, String dosage, int quantity) {
+    // Constructor with all fields
+    public Prescription(String prescriptionId, String patientId, String doctorId, String medicineName, String dosage, String date) {
         this.prescriptionId = prescriptionId;
         this.patientId = patientId;
         this.doctorId = doctorId;
-        this.medication = medication;
+        this.medicineName = medicineName;
         this.dosage = dosage;
-        this.quantity = quantity;
+        this.date = date;
     }
 
     // Getters
     public String getPrescriptionId() { return prescriptionId; }
     public String getPatientId() { return patientId; }
     public String getDoctorId() { return doctorId; }
-    public String getMedication() { return medication; }
+    public String getMedicineName() { return medicineName; }
     public String getDosage() { return dosage; }
-    public int getQuantity() { return quantity; }
+    public String getDate() { return date; }
 
-    // Setters (if needed, though prescriptions are usually final)
-    // public void setQuantity(int quantity) { this.quantity = quantity; }
+    // Setters (optional)
+    public void setDosage(String dosage) { this.dosage = dosage; }
+    public void setDate(String date) { this.date = date; }
 
     @Override
     public String toString() {
-        return "Prescription{" + "prescriptionId=" + prescriptionId + ", patientId=" + patientId + ", doctorId=" + doctorId + ", medication=" + medication + ", dosage=" + dosage + ", quantity=" + quantity + '}';
+        return "Prescription{" +
+                "prescriptionId='" + prescriptionId + '\'' +
+                ", patientId='" + patientId + '\'' +
+                ", doctorId='" + doctorId + '\'' +
+                ", medicineName='" + medicineName + '\'' +
+                ", dosage='" + dosage + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

@@ -5,36 +5,47 @@
 // File: Doctor.java
 package hospitalmanagementsystem;
 
+import javax.swing.*;
+import java.util.List;
+
 /**
- * Represents a doctor in the hospital.
- * Demonstrates Encapsulation (CLO1, CLO3).
+ * Represents a Doctor in the Hospital Management System.
+ * Extends User class and implements doctor-specific functionalities.
+ * 
+ * CLO1: Demonstrates Inheritance and Encapsulation
+ * CLO3: Implements real-world doctor role
  */
-public class Doctor {
-    private String id;
+// File: Doctor.java
+
+
+public class Doctor extends User {
+    private String doctorId;
+    private String id;        // For file data
     private String name;
     private String specialization;
     private String contact;
 
+    // Constructor for login
+    public Doctor(String username, String password, String doctorId) {
+        super(username, password, "Doctor");
+        this.doctorId = doctorId;
+    }
+
+    // Constructor for loading from doctors.txt
     public Doctor(String id, String name, String specialization, String contact) {
+        super("temp", "temp", "Doctor");
         this.id = id;
         this.name = name;
         this.specialization = specialization;
         this.contact = contact;
     }
 
-    // Getters
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public String getSpecialization() { return specialization; }
-    public String getContact() { return contact; }
-
-    // Setters
-    public void setName(String name) { this.name = name; }
-    public void setSpecialization(String specialization) { this.specialization = specialization; }
-    public void setContact(String contact) { this.contact = contact; }
-
     @Override
-    public String toString() {
-         return "Doctor{" + "id=" + id + ", name=" + name + ", specialization=" + specialization + ", contact=" + contact + '}';
+    public void showDashboard() {
+        new DoctorDashboard(doctorId).setVisible(true);
+    }
+
+    public String getDoctorId() {
+        return doctorId != null ? doctorId : id;
     }
 }
