@@ -1,0 +1,6 @@
+Item ID: 1111
+Item Name: Medical
+Stock In: 1000
+Item Name: 2000
+Stock Status: CRITICAL
+----------------------------------

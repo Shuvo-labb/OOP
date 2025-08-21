@@ -37,47 +37,71 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnahp = new javax.swing.JButton();
         btnreghp = new javax.swing.JButton();
         btnlogout = new javax.swing.JButton();
-        btndispencemed = new javax.swing.JButton();
+        AdminDashboard = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         btnviewpres.setBackground(new java.awt.Color(255, 255, 51));
         btnviewpres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnviewpres.setForeground(new java.awt.Color(0, 0, 0));
-        btnviewpres.setText("View prescription");
+        btnviewpres.setText("View prescription and Dispense Medicine");
+        btnviewpres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewpresActionPerformed(evt);
+            }
+        });
 
         btngenstockrep.setBackground(new java.awt.Color(255, 255, 51));
         btngenstockrep.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btngenstockrep.setForeground(new java.awt.Color(0, 0, 0));
         btngenstockrep.setText("Generate stock reports");
+        btngenstockrep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngenstockrepActionPerformed(evt);
+            }
+        });
 
         btnmanageinv.setBackground(new java.awt.Color(255, 255, 51));
         btnmanageinv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnmanageinv.setForeground(new java.awt.Color(0, 0, 0));
         btnmanageinv.setText("Manage inventory");
+        btnmanageinv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmanageinvActionPerformed(evt);
+            }
+        });
 
         btnreg.setBackground(new java.awt.Color(255, 255, 51));
         btnreg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnreg.setForeground(new java.awt.Color(0, 0, 0));
         btnreg.setText("Register staff/patient");
+        btnreg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregActionPerformed(evt);
+            }
+        });
 
         btnahp.setBackground(new java.awt.Color(255, 255, 51));
         btnahp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnahp.setForeground(new java.awt.Color(0, 0, 0));
         btnahp.setText("Amend hospital policies");
+        btnahp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnahpActionPerformed(evt);
+            }
+        });
 
         btnreghp.setBackground(new java.awt.Color(255, 255, 51));
         btnreghp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnreghp.setForeground(new java.awt.Color(0, 0, 0));
         btnreghp.setText("Register healthcare programs");
+        btnreghp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreghpActionPerformed(evt);
+            }
+        });
 
         btnlogout.setBackground(new java.awt.Color(255, 255, 51));
         btnlogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnlogout.setForeground(new java.awt.Color(0, 0, 0));
         btnlogout.setText("logout");
         btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,78 +109,88 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btndispencemed.setBackground(new java.awt.Color(255, 255, 51));
-        btndispencemed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btndispencemed.setForeground(new java.awt.Color(0, 0, 0));
-        btndispencemed.setText("Dispence medicine");
+        AdminDashboard.setText("Admin Dashboard");
+        AdminDashboard.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                AdminDashboardAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnreg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnahp))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnreghp)
-                                .addGap(132, 132, 132)
-                                .addComponent(btnlogout)
-                                .addGap(0, 82, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnviewpres)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btndispencemed)))
-                        .addGap(69, 69, 69))
+                                .addGap(67, 67, 67))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnmanageinv)
+                                .addGap(125, 125, 125)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btngenstockrep)
+                            .addComponent(btnlogout))
+                        .addGap(21, 21, 21))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnmanageinv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btngenstockrep)
-                        .addGap(41, 41, 41))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnreg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnahp)
-                        .addGap(34, 34, 34))))
+                        .addGap(100, 100, 100)
+                        .addComponent(btnviewpres)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(41, 41, 41))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(AdminDashboard)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(AdminDashboard)
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnviewpres)
-                    .addComponent(btndispencemed))
-                .addGap(55, 55, 55)
+                .addComponent(btnviewpres)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btngenstockrep)
                     .addComponent(btnmanageinv))
-                .addGap(59, 59, 59)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnreg)
                     .addComponent(btnahp))
-                .addGap(88, 88, 88)
+                .addGap(69, 69, 69)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnreghp)
                     .addComponent(btnlogout))
-                .addContainerGap(611, Short.MAX_VALUE))
+                .addContainerGap(540, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +199,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,6 +215,47 @@ public class AdminDashboard extends javax.swing.JFrame {
         new LoginFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnlogoutActionPerformed
+
+    private void btnviewpresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpresActionPerformed
+    Viewprescription view = new Viewprescription();  // Create the new frame
+    view.setVisible(true);                           // Show the new frame
+    this.dispose();                                  // Close the current frame (optional)
+    }//GEN-LAST:event_btnviewpresActionPerformed
+
+    private void btnmanageinvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageinvActionPerformed
+    InventoryManagement inventory = new InventoryManagement();  // Create the new frame
+    inventory.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnmanageinvActionPerformed
+
+    private void btnahpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnahpActionPerformed
+    Amendhospitalpolicies amend = new Amendhospitalpolicies ();  // Create the new frame
+    amend.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnahpActionPerformed
+
+    private void btnregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregActionPerformed
+    Registerstaffandpatients reg = new Registerstaffandpatients();  // Create the new frame
+    reg.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btnregActionPerformed
+
+    private void btnreghpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreghpActionPerformed
+    Registerhealthcareprograms reg = new Registerhealthcareprograms ();  // Create the new frame
+    reg.setVisible(true);                           // Show the new frame
+    this.dispose();  
+    }//GEN-LAST:event_btnreghpActionPerformed
+
+    private void btngenstockrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenstockrepActionPerformed
+    GenerateStockReports generate = new GenerateStockReports();  // Create the new frame
+    generate.setVisible(true);                           // Show the new frame
+    this.dispose();                                      // Close the current frame (optional)
+    }//GEN-LAST:event_btngenstockrepActionPerformed
+
+    private void AdminDashboardAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_AdminDashboardAncestorAdded
+        AdminDashboard.setText("Admin Dashboard");
+        AdminDashboard.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 20));
+    }//GEN-LAST:event_AdminDashboardAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -208,8 +283,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AdminDashboard;
     private javax.swing.JButton btnahp;
-    private javax.swing.JButton btndispencemed;
     private javax.swing.JButton btngenstockrep;
     private javax.swing.JButton btnlogout;
     private javax.swing.JButton btnmanageinv;
